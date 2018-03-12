@@ -16,21 +16,44 @@ componentDidMount () {
     this.setState({books_list: books})
       //  console.log(this.state.books_list)
   })
-  console.log(this.state.books_list)
+  // console.log(this.state.books_list)
 }
 
 moveBook = (newBook, newShelf) => {
-  console.log(newShelf)
-  BooksAPI.update(newBook, newShelf).then(response =>{
-    BooksAPI.getAll().then((books) => {
-      this.setState({books_list: books})
-       //  console.log(this.state.books_list)
+
+  if (this.state.books_list.includes(newBook)){
+    console.log('yes it exists')
+    let temp_list = this.state.books_list
+    // console.log(temp_list[temp_list.indexOf(newBook)])
+    temp_list[temp_list.indexOf(newBook)].shelf = newShelf
+    BooksAPI.update(newBook, newShelf).then(response =>{
+    
+      console.log(response)
     })
-  })
+    this.setState({books_list:temp_list})
+    // this.setState({books_list: books})
+    // this.setState({books_list})
+  } else {
+    BooksAPI.update(newBook, newShelf).then(response =>{
+    console.log(newBook)
+      BooksAPI.getAll().then((books) => {
+        this.setState({books_list: books})
+         //  console.log(this.state.books_list)
+      })
+    })
+  }
+  // console.log(newShelf)
+  // BooksAPI.update(newBook, newShelf).then(response =>{
+    
+  //   BooksAPI.getAll().then((books) => {
+  //     this.setState({books_list: books})
+  //      //  console.log(this.state.books_list)
+  //   })
+  // })
 }
 
 render() {
-console.log(this.state.books_list)
+// console.log(this.state.books_list)
 let wantToRead =[]
 var read = []
 let currentlyReading = []
@@ -73,6 +96,7 @@ this.state.books_list.map((book) => {
          
         <Route path='/search' render={ () => (
           <SearchPage
+            temp_list={this.state.books_list}
             moveBook={this.moveBook}/>
           )}/>
       </div>
