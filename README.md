@@ -24,3 +24,8 @@ Builds the app for production to the `build` folder.
 ## Deployment
 
 `npm run build` creates a `build` directory with a production build of your app. Set up your favourite HTTP server so that a visitor to your site is served `index.html`, and requests to static paths like `/static/js/main.<hash>.js` are served with the contents of the `/static/js/main.<hash>.js` file.
+
+
+## Credits and Reference
+
+  `https://www.npmjs.com/package/react-input-box-done-typing`  

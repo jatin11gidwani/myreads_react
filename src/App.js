@@ -11,46 +11,35 @@ class BooksApp extends React.Component {
       books_list : []
   }  
 
-componentDidMount () {
-  BooksAPI.getAll().then((books) => {
-    this.setState({books_list: books})
-      //  console.log(this.state.books_list)
-  })
-  // console.log(this.state.books_list)
-}
-
-moveBook = (newBook, newShelf) => {
-
-  if (this.state.books_list.includes(newBook)){
-    console.log('yes it exists')
-    let temp_list = this.state.books_list
-    // console.log(temp_list[temp_list.indexOf(newBook)])
-    temp_list[temp_list.indexOf(newBook)].shelf = newShelf
-    BooksAPI.update(newBook, newShelf).then(response =>{
-    
-      console.log(response)
-    })
-    this.setState({books_list:temp_list})
-    // this.setState({books_list: books})
-    // this.setState({books_list})
-  } else {
-    BooksAPI.update(newBook, newShelf).then(response =>{
-    console.log(newBook)
-      BooksAPI.getAll().then((books) => {
-        this.setState({books_list: books})
-         //  console.log(this.state.books_list)
-      })
+  componentDidMount () {
+    BooksAPI.getAll().then((books) => {
+      this.setState({books_list: books})
+        //  console.log(this.state.books_list)
     })
   }
-  // console.log(newShelf)
-  // BooksAPI.update(newBook, newShelf).then(response =>{
-    
-  //   BooksAPI.getAll().then((books) => {
-  //     this.setState({books_list: books})
-  //      //  console.log(this.state.books_list)
-  //   })
-  // })
-}
+
+  moveBook = (newBook, newShelf) => {
+    if (this.state.books_list.includes(newBook)){
+      console.log('yes it exists')
+      let temp_list = this.state.books_list
+      // console.log(temp_list[temp_list.indexOf(newBook)])
+      temp_list[temp_list.indexOf(newBook)].shelf = newShelf
+      BooksAPI.update(newBook, newShelf).then(response =>{ 
+        console.log(response)
+      })
+      this.setState({books_list:temp_list})
+      // this.setState({books_list: books})
+      // this.setState({books_list})
+    } else {
+      BooksAPI.update(newBook, newShelf).then(response =>{
+      console.log(newBook)
+        BooksAPI.getAll().then((books) => {
+          this.setState({books_list: books})
+          //  console.log(this.state.books_list)
+        })
+      })
+    }
+  }
 
 render() {
 // console.log(this.state.books_list)
