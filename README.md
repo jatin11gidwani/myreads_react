@@ -27,4 +27,5 @@ Builds the app for production to the `build` folder.
 
 ## Credits
 
-[Heroku](https://heroku.com) for deployment of this web app which you can visit [by clicking here.](https://react-my-reads-jatin.herokuapp.com/)
+1- [Heroku](https://heroku.com) for deployment of this web app which you can visit [by clicking here.](https://react-my-reads-jatin.herokuapp.com/)
+2- Used this npm package [react-debounce-input.](https://www.npmjs.com/package/react-debounce-input)
