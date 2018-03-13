@@ -1,4 +1,4 @@
-MyReads is a project from Udacity's React Nanodegree course. This is a bookshelf app that lets you to organize books that you have read.
+MyReads is a project from Udacity's React Nanodegree course. This is a bookshelf app that lets you to organize books that you have read. which you visit online [by clicking here.](https://react-my-reads-jatin.herokuapp.com/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). A subset of [instructions](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md) is shown bellow:
 
@@ -25,7 +25,6 @@ Builds the app for production to the `build` folder.
 
 `npm run build` creates a `build` directory with a production build of your app. Set up your favourite HTTP server so that a visitor to your site is served `index.html`, and requests to static paths like `/static/js/main.<hash>.js` are served with the contents of the `/static/js/main.<hash>.js` file.
 
+## Credits
 
-## Credits and Reference
-
-  `https://www.npmjs.com/package/react-input-box-done-typing`  
+[Heroku](https://heroku.com) for deployment of this web app which you can visit [by clicking here.](https://react-my-reads-jatin.herokuapp.com/)
