@@ -3,7 +3,6 @@ import { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Book from './Book'
 import * as BooksAPI from './../BooksAPI'
-import InputBoxDoneTyping from 'react-input-box-done-typing'
 
 class SearchPage extends Component {
 
@@ -14,7 +13,6 @@ class SearchPage extends Component {
 
   showSearch = () => {
     const {query , books_list} = this.state
-    //  console.log(this.state.query)
     if (query === '') {
       console.log('query is empty')
       return (
@@ -47,7 +45,6 @@ class SearchPage extends Component {
           </li>
         ))
       )
-      // console.log('worked')
     }
   }
   
@@ -59,7 +56,7 @@ class SearchPage extends Component {
       }
       else {
         let temp_books = books.map((book)=> {
-          console.log(book)
+          // console.log(book)
           book.shelf = "none"
           for(let i =0 ; i < this.props.temp_list.length ; i++) {
             if(book.id === this.props.temp_list[i].id) {
@@ -78,12 +75,11 @@ class SearchPage extends Component {
 
   updateQuery = (query) => {
     this.setState({query: query})
-    console.log(this.state.query , query)
-    if(query !== "" )
-      this.fetchbooks(query)
-    }
-
+    this.fetchbooks(query)
+  }
+  
   render () {
+    console.log('render',this.state.query)
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -93,20 +89,17 @@ class SearchPage extends Component {
             Close
           </Link>
           <div  className="search-books-input-wrapper">
-            <InputBoxDoneTyping
-                id="input-box-done-typing"
-                className="form-control"
-                placeholder="Start typing ..."
-                autoComplete="off"
-                doneTyping={(value) => { this.updateQuery(value) } }
-                doneTypingInterval={350}
+            <input type="text" placeholder="Search by title or author"
+              value={this.state.query}
+              id='input'
+              onChange={(event => this.updateQuery(event.target.value))}
             />
           </div>
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
             {
-             this.showSearch()
+              this.showSearch()
             }  
           </ol>
         </div>
